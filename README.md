@@ -1,3 +1,6 @@
+# Setup
+This started as a place to keep my dotfiles but I keep repeating a lot of configuration setup that now it's expanded to more than just that.
+
 ## Setting up i3
 * Install i3 `sudo apt-get install i3`
 * Install i3blocks `sudo apt-get install i3blocks`
