@@ -25,7 +25,10 @@ This started as a place to keep my dotfiles but I keep repeating a lot of config
 ```
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
-* Copy the vimrc `scp vimrc/.vimrc ~/.vimrc`
+* Copy solarized colors `scp vim/vim-colors-solarized-master/colors/solarized.vim ~/.vim/colors/`
+* Copy the vimrc `scp vim/.vimrc ~/.vimrc`
 * Start up VIM and run `:PluginInstall`
 
 
+## Solarized
+* Get solarized gnome terminal colors from `https://github.com/Anthony25/gnome-terminal-colors-solarized`
