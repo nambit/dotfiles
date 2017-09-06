@@ -20,6 +20,11 @@ This started as a place to keep my dotfiles but I keep repeating a lot of config
 * Copy i3blocks file. `scp i3/i3blocks.conf ~/.config/i3`
 * Set the feh background to an appropriate wallpaper
 
+### Other apps to install
+* Thunar for file system
+* pavucontrol for audio/output devices
+** Note: On the dell xps, in order to reset the sound card, you can do `sudo modprobe snd-soc-rt286`
+
 ## Setting up VIM
 * VIM uses vundle so install that first 
 ```
