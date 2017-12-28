@@ -35,6 +35,11 @@ set wildmenu
 inoremap jk <ESC>
 nnoremap <C-o> :NERDTreeToggle<CR>
 
+set cursorline
+if v:version > 703 || v:version == 703 && has('patch541')
+  set formatoptions+=j
+endif
+
 let mapleader = "\<Space>"
 
 let g:vim_code_browser_url_handler_command = "xargs open"

@@ -13,7 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Francisco Display 10
+#font pango:monospace 8
+font pango:System San Francisco Display 13
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -30,30 +31,39 @@ font pango:System San Francisco Display 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#set $TERMINAL "termite"
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# No window title bar
+new_window 1pixel
+
+# To refresh i3blocks
+set $REFRESH pkill -RTMIN+10 i3blocks
+
 # start dmenu (a program launcher)
 #bindsym $mod+space exec dmenu_run
 bindsym $mod+space exec rofi -show run -lines 3 -eh 2 -width 100 -padding 480 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+	
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+h focus left; exec $REFRESH
+bindsym $mod+j focus down; exec $REFRESH
+bindsym $mod+k focus up; exec $REFRESH
+bindsym $mod+l focus right; exec $REFRESH
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+Left focus left 
+bindsym $mod+Down focus down 
+bindsym $mod+Up focus up 
+bindsym $mod+Right focus right 
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -93,34 +103,44 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $ws1 "1: Main "
-set $ws2 "2: Terminal "
-set $ws3 "3: Web "
-set $ws10 "0: Music "
+set $workspace1 "1:"
+set $workspace2 "2:"
+set $workspace3 "3:"
+set $workspace4 "4:"
+set $workspace5 "2: Terminal"
+set $workspace6 "2: Terminal"
+set $workspace10 "10:"
+
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace 4
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+0 workspace $workspace10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+#assign [class="Arandr"] $workspace10
+#spotify workaround https://github.com/i3/i3/issues/2060
+for_window [class="Spotify"] move to workspace $workspace10
+for_window [class="ATodo"] floating enable
+for_window [class="Magician's Dilemma"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -154,7 +174,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
+bindsym $mod+p exec i3lock
 
 set $bg-color 	         #2f343f
 set $inactive-bg-color   #2f343f
@@ -165,41 +185,48 @@ set $urgent-bg-color     #E53935
 # window colors
 #                       border              background         text                 indicator
 client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color 	$inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color 	$inactive-bg-color $inactive-text-color #00ff00
-client.urgent 					$urgent-bg-color 		$urgent-bg-color 	 $text-color 					#00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
 hide_edge_borders both
+
+#exec_always --no-startup-id xrandr --dpi 142
+exec_always --no-startup-id feh --bg-fill /home/ammar/Pictures/purple_sunset-wallpaper-1920x1080.jpg
+exec compton -f
+exec --no-startup-id nm-applet
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        tray_output primary
-				colors {
-					background $bg-color
-						separator #757575
-						#                  border             background         text
-						focused_workspace  $bg-color          $bg-color          $text-color
-						inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-						urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-				}
+  status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  tray_output primary
+  position top
+	colors {
+		background $bg-color
+	    	separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}	
+	
 }
 
-bindsym $mod+p exec i3lock --color "$bg-color"
-
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% && $REFRESH #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% && $REFRESH #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle && $REFRESH # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && $REFRESH # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 && $REFRESH # decrease screen brightness
+
+# Touchpad controls
+bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-
-exec_always feh --bg-scale /home/ammar/Pictures/jamie.jpeg
-exec compton -f
-
-for_window [class="Spotify"] move to workspace $ws10
