@@ -7,6 +7,7 @@ This started as a place to keep my dotfiles but I keep repeating a lot of config
 * Install lxappearance `sudo apt-get install lxappearance`
 * Install compton `sudo apt-get install compton`
 * Install feh `sudo apt-get install feh`
+* Install rofi `sudo apt-get install rofi`
 ### Set up fonts
 * Create fonts directory `mkdir ~/.fonts`
 * Copy fonts `cp -R i3/fonts ~/.fonts`
