@@ -3,7 +3,6 @@ This started as a place to keep my dotfiles but I keep repeating a lot of config
 
 ## Setting up i3
 * Install i3 `sudo apt-get install i3`
-* Install i3blocks `sudo apt-get install i3blocks`
 * Install lxappearance `sudo apt-get install lxappearance`
 * Install compton `sudo apt-get install compton`
 * Install feh `sudo apt-get install feh`
@@ -18,8 +17,14 @@ This started as a place to keep my dotfiles but I keep repeating a lot of config
 
 ### Setup i3
 * Copy i3config file. `scp i3/config ~/.config/i3/config`
-* Copy i3blocks file. `scp i3/i3blocks.conf ~/.config/i3`
+* Copy compton config file `scp i3/compton.conf ~/.config/i3`
+* Copy rofi config `mkdir ~/.config/rofi && scp rofi/config ~/.config/rofi`
+* Install i3pystatus `https://github.com/enkore/i3pystatus`
 * Set the feh background to an appropriate wallpaper
+
+#### Depracated
+* Install i3blocks `sudo apt-get install i3blocks`
+* Copy i3blocks file. `scp i3/i3blocks.conf ~/.config/i3`
 
 ### Other apps to install
 * Thunar for file system
