@@ -32,5 +32,11 @@ This started as a place to keep my dotfiles but I keep repeating a lot of config
 * Copy the vimrc `scp vim/.vimrc ~/.vimrc`
 * Start up VIM and run `:PluginInstall`
 
-## Solarized
+## Setting up Terminal
+* Install termite: `sudo apt-get install termite`
+* It's already configured as default for i3 in the config
+* Install powerline fonts: `https://github.com/powerline/fonts`
+* Copy termite config so it looks nice: `mkdir ~/.config/termite && scp termite/config ~/.config/termite/config`
+
+### Gnome terminal (old)
 * Get solarized gnome terminal colors from `https://github.com/Anthony25/gnome-terminal-colors-solarized`
