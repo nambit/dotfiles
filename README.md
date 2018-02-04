@@ -27,14 +27,10 @@ This started as a place to keep my dotfiles but I keep repeating a lot of config
 ** Note: On the dell xps, in order to reset the sound card, you can do `sudo modprobe snd-soc-rt286`
 
 ## Setting up VIM
-* VIM uses vundle so install that first 
-```
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-```
-* Copy solarized colors `scp vim/vim-colors-solarized-master/colors/solarized.vim ~/.vim/colors/`
+* VIM uses vundle so install that first  `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+* Taskwiki doesn't have markdown features in the main branch so we clone from the special branch: `git clone -b extra-syntaxes https://github.com/DancingQuanta/taskwiki.git ~/.vim/bundle`
 * Copy the vimrc `scp vim/.vimrc ~/.vimrc`
 * Start up VIM and run `:PluginInstall`
-
 
 ## Solarized
 * Get solarized gnome terminal colors from `https://github.com/Anthony25/gnome-terminal-colors-solarized`
