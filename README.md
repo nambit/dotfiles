@@ -1,6 +1,10 @@
 # Setup
 This started as a place to keep my dotfiles but I keep repeating a lot of configuration setup that now it's expanded to more than just that.
 
+### Install i3gaps:
+* Dependencies: `sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev xutils-dev libxcb-shape0-dev autoconf`
+* From https://benjames.io/2017/09/03/installing-i3-gaps-on-ubuntu-16-04/
+
 ## Setting up i3
 * Install i3 `sudo apt-get install i3`
 * Install lxappearance `sudo apt-get install lxappearance`
