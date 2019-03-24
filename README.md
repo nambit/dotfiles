@@ -1,8 +1,39 @@
 # Setup
 This started as a place to keep my dotfiles but I keep repeating a lot of configuration setup that now it's expanded to more than just that.
 
+### Basics:
+* Install git, vim, zsh, python3-pip
+`sudo apt-get install git vim zsh python3-pip`
+
+
+### Config:
+* Swap capslock: 
+`setxkbmap -option ctrl:swapcaps`
+
+
+
 ### Install i3gaps:
+
 * Dependencies: `sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev xutils-dev libxcb-shape0-dev autoconf`
+* Install xcb-util-xrm
+```
+git clone https://github.com/Airblader/xcb-util-xrm
+cd xcb-util-xrm
+git submodule update --init
+./autogen.sh --prefix=/usr
+make && sudo make install
+```
+* Install i3-gaps
+```
+git clone https://www.github.com/Airblader/i3 i3-gaps
+cd i3-gaps/
+autoreconf --force --install
+mkdir build && cd build
+cd build/
+../configure --prefix=/usr --sysconfdir=/etc
+make && sudo make install
+```
+
 * From https://benjames.io/2017/09/03/installing-i3-gaps-on-ubuntu-16-04/
 
 ## Setting up i3
@@ -24,6 +55,8 @@ This started as a place to keep my dotfiles but I keep repeating a lot of config
 * Copy compton config file `scp i3/compton.conf ~/.config/i3`
 * Copy rofi config `mkdir ~/.config/rofi && scp rofi/config ~/.config/rofi`
 * Install i3pystatus `https://github.com/enkore/i3pystatus`
+** `pip3 install git+https://github.com/enkore/i3pystatus.git
+
 * Set the feh background to an appropriate wallpaper
 
 #### Depracated
