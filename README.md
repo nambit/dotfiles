@@ -82,3 +82,4 @@ make && sudo make install
 
 ### Gnome terminal (old)
 * Get solarized gnome terminal colors from `https://github.com/Anthony25/gnome-terminal-colors-solarized`
+* Alternatively get `https://github.com/metalelf0/gnome-terminal-colors.git` and install gruvbox from it
